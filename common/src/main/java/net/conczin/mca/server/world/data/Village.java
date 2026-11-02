@@ -269,7 +269,7 @@ public class Village implements Iterable<Building> {
             beds = (int) world.getPoiManager().findAll(
                     registryEntry -> registryEntry.is(PoiTypes.HOME),
                     this::isPositionValidBed,
-                    new BlockPos(getCenter()),
+                    new BlockPos(getCenter().getX(), getCenter().getY(), getCenter().getZ()),
                     radius + BORDER_MARGIN,
                     PoiManager.Occupancy.ANY).count();
         }

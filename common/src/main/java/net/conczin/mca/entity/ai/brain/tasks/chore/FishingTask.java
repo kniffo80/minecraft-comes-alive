@@ -73,7 +73,8 @@ public class FishingTask extends AbstractChoreTask {
             villager.lookAt(targetWater);
 
             if (!hasCastRod) {
-                villager.swing(villager.getDominantHand());
+                ItemStack fishingRod = villager.getItemInHand(villager.getDominantHand());
+                villager.swing(villager.getDominantHand(), fishingRod.getInteractAnimation());
                 hasCastRod = true;
             }
 
@@ -83,7 +84,8 @@ public class FishingTask extends AbstractChoreTask {
                 if (villager.getRandom().nextFloat() >= 0.35F) {
                     ItemStack stack = getFishingLoot(world, villager);
 
-                    villager.swing(villager.getDominantHand());
+                    ItemStack fishingRod = villager.getItemInHand(villager.getDominantHand());
+                    villager.swing(villager.getDominantHand(), fishingRod.getInteractAnimation());
                     villager.getInventory().addItem(stack);
                     villager.getItemInHand(villager.getDominantHand()).hurtAndBreak(1, villager, villager.getDominantSlot());
                 }
