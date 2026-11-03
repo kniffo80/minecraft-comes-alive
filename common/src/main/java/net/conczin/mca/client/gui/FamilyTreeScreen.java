@@ -1,5 +1,6 @@
 package net.conczin.mca.client.gui;
 
+import com.mojang.blaze3d.platform.InputConstants;
 import net.conczin.mca.MCA;
 import net.conczin.mca.client.gui.widget.WidgetUtils;
 import net.conczin.mca.client.resources.Icon;
@@ -80,7 +81,7 @@ public class FamilyTreeScreen extends Screen {
 
     @Override
     public boolean mouseDragged(MouseButtonEvent event, double deltaX, double deltaY) {
-        if (event.button() == 0) {
+        if (event.button() == InputConstants.MOUSE_BUTTON_LEFT) {
             scrollX += deltaX;
             scrollY += deltaY;
             return true;
@@ -90,7 +91,7 @@ public class FamilyTreeScreen extends Screen {
 
     @Override
     public boolean mouseClicked(MouseButtonEvent event, boolean doubleClick) {
-        if (event.button() == 0 && focused != null) {
+        if (event.button() == InputConstants.MOUSE_BUTTON_LEFT && focused != null) {
             Minecraft.getInstance().getSoundManager().play(SimpleSoundInstance.forUI(SoundEvents.UI_BUTTON_CLICK, 1));
             if (focusEntity(focused.id)) {
                 rebuildTree();
